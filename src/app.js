@@ -26,13 +26,11 @@ const allowedOrigins = [
 
 app.use(cors({
     origin: function (origin, callback) {
-    
         if (!origin) return callback(null, true);
-
         if (allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
-            console.error("Blocked by CORS:", origin); 
+            console.error("Blocked by CORS:", origin);
             callback(new Error("Not allowed by CORS"));
         }
     },
@@ -41,11 +39,24 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
-
-app.options("*", cors());
+// ✅ Correct preflight handler for newer Express/path-to-regexp
+app.options("/(.*)", cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
 app.use(express.json());
 app.use(cookieParser());
+// ... rest of your routes
 
 app.use("/api", authRouter);
 app.use("/api", profileRouter);
