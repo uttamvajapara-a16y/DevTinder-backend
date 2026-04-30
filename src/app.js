@@ -18,8 +18,9 @@ const app = express();
 
 app.use(cors({
     origin: [
+        "http://localhost:3000",
         "http://localhost:5173" ,
-        "https://dev-tinder-web-nine-sand.vercel.app/"
+        process.env.VERCEL_FRONTEND_LINK
     ],
     credentials: true
 })) ;
