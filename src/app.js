@@ -19,6 +19,8 @@ const app = express();
 const allowedOrigins = [
     "http://localhost:3000",
     "http://localhost:5173",
+    "https://dev-tinder-web-nine-sand.vercel.app",
+    "https://dev-tinder-9ua6aic7r-uttamvajapara-a16ys-projects.vercel.app",
     process.env.VERCEL_FRONTEND_LINK
 ].filter(Boolean);
 
