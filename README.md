@@ -62,12 +62,14 @@ JWT_SECRET=your_jwt_secret_key
 
 ```
 devtinder-backend/
-├── models/        # Mongoose schemas (User, ConnectionRequest, Chat, etc.)
-├── routes/         # API route handlers (auth, profile, requests, chat)
+├── configu         # db connection
 ├── middlewares/    # Auth middleware, validation, error handling
-├── utils/           # Helper functions
-├── socket/          # Socket.io setup and event handlers
-└── app.js           # Entry point
+├── models/         # Mongoose schemas (User, ConnectionRequest, Chat, etc.)
+├── routers/        # API route handlers (auth, profile, requests, chat)
+├── src/app.js      # Entry point
+└──  utils/         # Helper functions
+
+
 ```
 
 ## 🔌 API Overview
