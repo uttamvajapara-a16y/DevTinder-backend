@@ -83,7 +83,6 @@ devtinder-backend/
 | POST   | `/request/review/:status/:id` | Accept/reject a connection request |
 | GET    | `/connections`            | Get all accepted connections          |
 
-> Update this table to match your actual route names and methods.
 
 ## 💬 Real-Time Chat
 
